@@ -3,6 +3,8 @@ const screens = document.querySelectorAll('.screen')
 const timeList = document.querySelector('#time-list')
 const timeEl = document.querySelector('#time')
 const board = document.querySelector('#board')
+const colors = ['#E9967A', '#1E90FF', '#00FA9A', '#F0E68C', '#EE82EE', '#A0522D', '#00FFFF', '#F4A460', '#87CEEB']
+
 let time = 20
 let score = 0
 
@@ -65,19 +67,29 @@ function finishGame() {
 
 function createRandomCircle() {
     const circle = document.createElement('div')
+    const color = getRandomColor()
     const size = getRandomNumber(10, 60)
     const { width, height } = board.getBoundingClientRect()
     const x = getRandomNumber(0, width - size)
     const y = getRandomNumber(0, height - size)
+
     circle.classList.add('circle')
+    circle.style.background = color
     circle.style.width = `${size}px`
     circle.style.height = `${size}px`
     circle.style.top = `${y}px`
     circle.style.left = `${x}px`
+
+
 
     board.append(circle)
 }
 
 function getRandomNumber(min, max) {
     return Math.round(Math.random() * (max - min) + min)
+}
+
+function getRandomColor() {
+    const index = Math.floor(Math.random() * colors.length)
+    return colors[index]
 }
