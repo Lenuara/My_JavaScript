@@ -30,10 +30,6 @@ board.addEventListener('click', event => {
     }
 })
 
-
-//debug
-//startGame()
-
 function startGame() {
     setInterval(decreaseTime, 1000)
     createRandomCircle()
@@ -74,13 +70,11 @@ function createRandomCircle() {
     const y = getRandomNumber(0, height - size)
 
     circle.classList.add('circle')
-    circle.style.background = color
+    circle.style.background = `radial-gradient(white, ${color})`
     circle.style.width = `${size}px`
     circle.style.height = `${size}px`
     circle.style.top = `${y}px`
     circle.style.left = `${x}px`
-
-
 
     board.append(circle)
 }
